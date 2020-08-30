@@ -1,0 +1,7 @@
+-->Descargar datos de las páginas
+-->Implementar las consultas en las demás páginas
+-->Id linea uno pagina ncbi son fasta
+-->pdb el id linea uno en el cabeza HEADER, de pagina rcb
+
+-->Cuales ya tiene y cuales no, comparando el identificador del virus
+
