@@ -34,10 +34,10 @@ print("Resultados: "+ count)
 #Obtención de la llave de la consulta
 patron = re.compile(r'<QueryKey>\b\d+\b</QueryKey>', re.A)
 flag = patron.search(search)
-key=flag.group()
-key=key.split('<QueryKey>')
-key=key[1].split('</QueryKey>')
-key=key[0]
+key = flag.group()
+key = key.split('<QueryKey>')
+key = key[1].split('</QueryKey>')
+key = key[0]
 print("Llave de busqueda: "+ key)
 
 #Consultar y descargar la información de cada GI number
