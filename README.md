@@ -3,7 +3,7 @@ Application that provides the necessary tools to manage genetic sequences. Provi
 ## _Version_
 0.0.1 (Development)
 ## _Dependencies_
-* You need install the BioPyhon library, more information:
+* You need install the BioPython library, more information:
     * _https://biopython.org/wiki/SeqIO_
 * You need the json library, more information:
     * _https://docs.python.org/3/library/json.html_
