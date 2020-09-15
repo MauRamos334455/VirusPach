@@ -24,17 +24,11 @@ for file in no_content:
     extension = re.search(extension_pattern, file)
     filename = no_path+os.sep+file
     if (extension == '.fasta'):
-        x = Organism()
-        x.createByFASTA(filename)
-        no.append(x)
+        no = Organism.createManyByFASTA(filename, no)
     elif (extension == '.aln'):
-        x = Organism()
-        x.createByCLUSTAL(filename)
-        no.append(x)
+        no = Organism.createManyByCLUSTAL(filename, no)
     elif (extension == '.json'):
-        x = Organism()
-        x.createByJSON(filename)
-        no.append(x)
+        no = Organism.createManyByJSON(filename, no)
     else:
         continue
 
@@ -45,20 +39,26 @@ for file in oo_content:
     extension = re.search(extension_pattern, file)
     filename = oo_path+os.sep+file
     if (extension == '.fasta'):
-        x = Organism()
-        x.createByFASTA(filename)
-        no.append(x)
+        oo = Organism.createManyByFASTA(filename, no)
     elif (extension == '.aln'):
-        x = Organism()
-        x.createByCLUSTAL(filename)
-        no.append(x)
+        oo = Organism.createManyByCLUSTAL(filename, no)
     elif (extension == '.json'):
-        x = Organism()
-        x.createByJSON(filename)
-        no.append(x)
+        oo = Organism.createManyByJSON(filename, no)
     else:
         continue
 
 # 6) Create an array for the results of the comparison
 ro = []
-    
+for i in oo:
+    ro.append(i)
+
+for i in no:
+    for x in ro:
+        if x == i:
+            continue
+        else:
+            ro.append(i)
+
+# 7) Watch the results
+for x in ro:
+    x.printOrganism()
