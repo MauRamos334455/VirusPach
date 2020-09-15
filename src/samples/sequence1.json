@@ -1,0 +1,9 @@
+{
+    "organism":[ 
+        {
+            "nc": "000.99",
+            "sequence": "ASGHDJS",
+            "description": "An organism"
+        }
+    ]
+}
