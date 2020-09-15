@@ -26,4 +26,4 @@ a complete update from a collection of files recently downloaded
 and a database that needs to be change, creating new organisms and replacing fields of the existing ones
 
 **The test files must be run from src directory, for example:**
-_/src$ python testClass.py_
+_(user@/src)$ python testClass.py_
