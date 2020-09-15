@@ -5,3 +5,6 @@
 
 -->Cuales ya tiene y cuales no, comparando el identificador del virus
 
+??? El NC debe considerarse como string o como int? Esto debido a que
+los ceros iniciales se iran, y debe ser float o int?
+??? Los ceros del NC son de un numero definido?

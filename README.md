@@ -20,3 +20,10 @@ genetic sequences, from a collection of methods that read files FASTA, CLUSTAL a
 * The file _testQuery.py_ contains an example of how to do a
 query on a web page (like the web page of the NCBI) for download
 a collection of FASTA or CLUSTAL files.
+
+* The file _testDatabase.py_ contains an example of how to do
+a complete update from a collection of files recently downloaded
+and a database that needs to be change, creating new organisms and replacing fields of the existing ones
+
+**The test files must be run from src directory, for example:**
+_/src$ python testClass.py_
