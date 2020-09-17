@@ -7,11 +7,11 @@ import re
 # ro --> result_organisms
 
 # 1) Create the route of the directory with all the new files
-no_path = './'
+no_path = './samples/new'
 
 # 2) Create the route of the directory with all the old files
 # Also we can use the actual directory, where the program is executed
-oo_path = os.getcwd()
+oo_path = './samples/old'
 
 # 3) Create arrays for the files
 no_content = os.listdir(no_path)
@@ -22,6 +22,7 @@ no = []
 extension_pattern = re.compile(r'\.[a-z]*')
 for file in no_content:
     extension = re.search(extension_pattern, file)
+    extension = extension.group(0)
     filename = no_path+os.sep+file
     if (extension == '.fasta'):
         no = Organism.createManyByFASTA(filename, no)
@@ -37,28 +38,34 @@ oo = []
 extension_pattern = re.compile(r'\.[a-z]*')
 for file in oo_content:
     extension = re.search(extension_pattern, file)
+    extension = extension.group(0)
     filename = oo_path+os.sep+file
     if (extension == '.fasta'):
-        oo = Organism.createManyByFASTA(filename, no)
+        oo = Organism.createManyByFASTA(filename, oo)
     elif (extension == '.aln'):
-        oo = Organism.createManyByCLUSTAL(filename, no)
+        oo = Organism.createManyByCLUSTAL(filename, oo)
     elif (extension == '.json'):
-        oo = Organism.createManyByJSON(filename, no)
+        oo = Organism.createManyByJSON(filename, oo)
     else:
         continue
 
 # 6) Create an array for the results of the comparison
 ro = []
+print("-----OLD ORGANISMS----")
 for i in oo:
+    i.printID()
+    if (ro.__contains__(i)):
+        continue
     ro.append(i)
 
+print("-----NEW ORGANISMS----")
 for i in no:
-    for x in ro:
-        if x == i:
-            continue
-        else:
-            ro.append(i)
+    i.printID()
+    if (ro.__contains__(i)):
+        continue
+    ro.append(i)
 
 # 7) Watch the results
-for x in ro:
-    x.printOrganism()
+print("---RESULT ORGANISMS----")
+for i in ro:
+    i.printID()
