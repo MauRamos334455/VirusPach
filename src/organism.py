@@ -47,6 +47,11 @@ class Organism:
     exportToJSON(route)
         Create a file with extension .json
         with the information of the organism
+    printOrganism()
+        Prints on screen all attributes of the self organism
+    printID()
+        Prints on screen the identification number of the self
+        organism
 
     """
     def __init__(self, nc=None, sequence=None, description=None):
@@ -90,8 +95,11 @@ class Organism:
 
     def printOrganism(self):
         print("Description: "+self.description)
-        print("NC: "+self.nc)
+        print("ID: "+self.nc)
         print("Sequence: "+self.sequence)
+    
+    def printID(self):
+        print("ID: "+self.nc)
 
     def createByJSON(self, filename, collection='organisms', nc='nc', 
     sequence='sequence', description='description'):
@@ -175,16 +183,10 @@ class Organism:
     
     @classmethod
     def createManyByFASTA(cls, filename, organisms=[]):
-        extension_pattern = re.compile(r'\.[a-z]*')
-        extension = re.search(extension_pattern, filename)
-        if not (extension):
-            raise TypeError("The file needs an extension")
-        if not (extension == '.fasta'):
-            raise TypeError("The extension needs to be FASTA")
         nc_pattern = re.compile(r'NC_[0-9]*\.?[0-9]*')
         with open(filename, "rU") as handle:
             for record in SeqIO.parse(handle, "fasta"):
-                x = cls.__init__()
+                x = Organism()
                 nc = re.search(nc_pattern, record.id)
                 if nc:
                     x.nc = nc.group(0)
@@ -198,16 +200,10 @@ class Organism:
 
     @classmethod
     def createManyByCLUSTAL(cls, filename, organisms=[]):
-        extension_pattern = re.compile(r'\.[a-z]*')
-        extension = re.search(extension_pattern, filename)
-        if not (extension):
-            raise TypeError("The file needs an extension")
-        if not (extension == '.aln'):
-            raise TypeError("The extension needs to be .aln")
         nc_pattern = re.compile(r'NC_[0-9]*\.?[0-9]*')
         with open(filename, "rU") as handle:
             for record in SeqIO.parse(handle, "clustal"):
-                x = cls.__init__()
+                x = Organism()
                 nc = re.search(nc_pattern, record.id)
                 if nc:
                     x.nc = nc.group(0)
@@ -225,7 +221,7 @@ class Organism:
         with open(filename) as handle:
             data = json.load(handle)
             for p in data[collection]:
-                x = cls.__init__()
+                x = Organism()
                 x.nc = p[nc]
                 x.sequence = p[sequence]
                 x.description = p[description]
