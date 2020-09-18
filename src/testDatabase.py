@@ -93,5 +93,5 @@ for i in no:
 # 7) Watch the results
 print("---RESULT ORGANISMS----")
 for i in ro:
-    i.printId()
-
+    i.printOrganism()
+    i.exportToFASTA('./results.fasta')

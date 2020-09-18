@@ -106,8 +106,9 @@ class Organism:
         Prints all information of the Organism on screen
         """
         print("Description: "+self.description)
-        print("ID: "+self.nc)
-        print("Sequence: "+self.sequence)
+        print("ID: "+self.id)
+        print("Version: "+ str(self.version))
+        #print("Sequence: "+self.sequence)
     
     def printId(self):
         """
@@ -188,7 +189,7 @@ class Organism:
         )
         sequences = []
         sequences.append(record)
-        with open(route, "w") as output_handle:
+        with open(route, "a") as output_handle:
             SeqIO.write(sequences, output_handle, "clustal")
         return
 
@@ -202,13 +203,13 @@ class Organism:
         record = SeqRecord(
             Seq(self.sequence),
             id = self.id+version,
-            name = self.description,
             description = self.description
         )
         sequences = []
         sequences.append(record)
-        with open(route, "w") as output_handle:
+        with open(route, "a") as output_handle:
             SeqIO.write(sequences, output_handle, "fasta")
+            output_handle.write("\n")
 
     def exportToJSON(self, route=None):
         if not (route):
@@ -224,7 +225,7 @@ class Organism:
             'sequence': self.sequence,
             'description': self.description
         })
-        with open(route, 'w') as outfile:
+        with open(route, 'a') as outfile:
             json.dump(data, outfile)
     
     @classmethod
