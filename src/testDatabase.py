@@ -53,19 +53,45 @@ for file in oo_content:
 ro = []
 print("-----OLD ORGANISMS----")
 for i in oo:
-    i.printID()
-    if (ro.__contains__(i)):
-        continue
-    ro.append(i)
+    i.printId()
+    if i in ro:
+        for x in ro:
+            if i == x:
+                if not x.version:
+                    ro.remove(x)
+                    ro.append(i)
+                elif not i.version:
+                    continue
+                elif i.version > x.version:
+                    ro.remove(x)
+                    ro.append(i)
+                else:
+                    continue
+    else:
+        ro.append(i)
 
 print("-----NEW ORGANISMS----")
 for i in no:
-    i.printID()
-    if (ro.__contains__(i)):
-        continue
-    ro.append(i)
+    i.printId()
+    if i in ro:
+        for x in ro:
+            if i == x:
+                if not x.version:
+                    ro.remove(x)
+                    ro.append(i)
+                elif not i.version:
+                    continue
+                elif i.version > x.version:
+                    ro.remove(x)
+                    ro.append(i)
+                else:
+                    continue
+    else:
+        ro.append(i)
+
 
 # 7) Watch the results
 print("---RESULT ORGANISMS----")
 for i in ro:
-    i.printID()
+    i.printId()
+
