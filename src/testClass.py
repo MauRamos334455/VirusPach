@@ -8,7 +8,7 @@ covid1 = Organism() #Empty organism
 #gripa = Organism(' ','',' ') 
 
 #Full organism
-covid10 = Organism(12345.0, 'AGSUJDJGGAS', 'Description of an organism') 
+covid10 = Organism('NC_12345.0', 12, 'AGSUJDJGGAS', 'Description of an organism') 
 
 #Can't be half full
 #covid10 = Organism(None, 'AGUHSHDS', 'Description') 
