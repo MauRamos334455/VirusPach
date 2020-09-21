@@ -49,49 +49,28 @@ for file in oo_content:
     else:
         continue
 
-# 6) Create an array for the results of the comparison
-ro = []
+# 6) Compare
+
 print("-----OLD ORGANISMS----")
 for i in oo:
     i.printId()
-    if i in ro:
-        for x in ro:
+    if i in oo:
+        for x in no:
             if i == x:
                 if not x.version:
-                    ro.remove(x)
-                    ro.append(i)
+                    no.remove(x)
+                    no.append(i)
                 elif not i.version:
                     continue
                 elif i.version > x.version:
-                    ro.remove(x)
-                    ro.append(i)
+                    no.remove(x)
+                    no.append(i)
                 else:
                     continue
     else:
-        ro.append(i)
+        no.append(i)
 
 print("-----NEW ORGANISMS----")
 for i in no:
-    i.printId()
-    if i in ro:
-        for x in ro:
-            if i == x:
-                if not x.version:
-                    ro.remove(x)
-                    ro.append(i)
-                elif not i.version:
-                    continue
-                elif i.version > x.version:
-                    ro.remove(x)
-                    ro.append(i)
-                else:
-                    continue
-    else:
-        ro.append(i)
-
-
-# 7) Watch the results
-print("---RESULT ORGANISMS----")
-for i in ro:
     i.printOrganism()
     i.exportToFASTA('./results.fasta')
