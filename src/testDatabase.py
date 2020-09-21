@@ -54,7 +54,7 @@ for file in oo_content:
 print("-----OLD ORGANISMS----")
 for i in oo:
     i.printId()
-    if i in oo:
+    if i in no:
         for x in no:
             if i == x:
                 if not x.version:

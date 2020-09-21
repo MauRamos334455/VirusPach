@@ -3,4 +3,4 @@ __pycache__/
 
 # Special Files
 Requirements.txt
-./src/test.py
+src/test.py
